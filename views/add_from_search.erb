@@ -1,5 +1,5 @@
 <div class="container">
-	<form action="" class="m-auto" style="max-width:600px">
+	<form method="POST" action="/search/:search_item/add/:index" class="m-auto" style="max-width:600px">
 		<h3 class="my-4">Please Add More Information</h3>
     <div class="form-group mb-3 row"><label for="rate-this-recipe2" class="col-md-5 col-form-label">Recipe</label>
 			<div class="col-md-7"><p><%= @recipe_name %></p></div>
@@ -14,6 +14,7 @@
 		<div class="form-group mb-3 row"><label for="preparation-time3" class="col-md-5 col-form-label">Preparation Time</label>
 			<div class="col-md-7"><input type="text" class="form-control form-control-lg" id="preparation-time3" name="preparation-time" required></div>
 		</div>
+		<input type="hidden" class="form-control form-control-lg" id="index_value" name="index_value" value = "<%= @index %>">
 		<hr class="my-4" />
 		<div class="form-group mb-3 row"><label for="submit5" class="col-md-5 col-form-label"></label>
 			<div class="col-md-7"><button class="btn-link" type="submit">Submit</button></div>

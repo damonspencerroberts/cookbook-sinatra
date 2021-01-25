@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'pry-byebug'
 require 'better_errors'
+require 'json'
 require_relative 'lib/cookbook'
 require_relative 'lib/recipe'
 require_relative 'lib/scrape'
@@ -45,10 +46,19 @@ get '/search/:search_item' do
 end
 
 get '/search/:search_item/add/:index' do
-  index = params[:index].to_i
-  @recipe_name = new_scrape.found_recipes[index]
-  @recipe_description = new_scrape.found_recipes_desc[index]
+  @index = params[:index].to_i
+  @recipe_name = new_scrape.found_recipes[@index]
+  @recipe_description = new_scrape.found_recipes_desc[@index]
   erb :add_from_search
+end
+
+post '/search/:search_item/add/:index' do
+  index = params['index_value'].to_i
+  recipe_name = new_scrape.found_recipes[index]
+  recipe_description = new_scrape.found_recipes_desc[index]
+  recipe = Recipe.new(recipe_name, recipe_description, params['rate-this-recipe'], params['preparation-time'])
+  new_cookbook.add_recipe(recipe)
+  redirect '/'
 end
 
 get '/about' do
