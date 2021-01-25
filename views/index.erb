@@ -1,0 +1,20 @@
+<div class = "index-title">
+  <h1>Welcome to my Recepedia</h1>
+</div>
+
+<div class = "nav-link">
+  <a class = "btn-link" href = "/new">Add</a>
+  <a class = "btn-link" href = "/search">Search</a>
+</div>
+
+<div class = "recipe-list">
+  <% @recipes.each do |recipe| %>
+    <div>
+      <h3><%= recipe.name %></h3>
+      <p><strong>Description:</strong> <%= recipe.description %></p>
+      <p>Rating: <%= recipe.rating %>/5</p>
+      <p>Time to prepare: <%= recipe.time_to_cook %></p>
+      <hr>
+    </div>
+  <% end %>
+</div>

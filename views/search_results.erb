@@ -1,0 +1,8 @@
+<div class = "recipe-list">
+  <% @recipes.each_with_index do |recipe, index| %>
+    <div>
+      <a href = <%= "/search/#{params["search_item"]}/add/#{index}" %>><h3><%= recipe %></h3></a>
+      <p><strong>Description:</strong> <%= @rec_desc[index] %></p>
+    </div>
+  <% end %>
+</div>

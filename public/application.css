@@ -1,0 +1,59 @@
+body {
+  color: rgb(78, 22, 22);
+}
+
+h1, h3 {
+  text-decoration: underline;
+}
+
+.logo-div {
+  margin: 40px auto;
+  text-align: center;
+}
+
+.logo {
+  height: 100px;
+  width: 100px;
+  border-radius: 10px;
+}
+
+/*Index File*/
+
+.index-title {
+  margin: 40px;
+  text-align: center;
+}
+
+.nav-link {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.btn-link {
+  font-size: 2.5rem;
+  margin: 5px;
+  padding: 10px;
+  border: solid 1px rgb(78, 22, 22);
+  border-radius: 20px;
+  color: rgb(78, 22, 22);
+  font-style: italic;
+  display: inline-block;
+  width: 200px;
+}
+
+.btn-link:hover {
+  background-color: rgb(78, 22, 22);
+  color: white;
+  text-decoration: none;
+}
+
+.recipe-list {
+  margin: 40px;
+}
+
+/*New Recipe Creation*/
+/*Used btn-link for the button*/
+
+.new-recipe-create label {
+  font-size: 1.5rem;
+}

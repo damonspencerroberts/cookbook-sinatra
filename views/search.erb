@@ -1,0 +1,25 @@
+<div class="container">
+	<form method="POST" action="/search" class="m-auto" style="max-width:600px">
+		<h3 class="my-4">Search for a recipe</h3>
+		<hr class="my-4" />
+		<div class="form-group mb-3 row"><label for="search2" class="col-md-5 col-form-label">Search</label>
+			<div class="col-md-7"><input type="text" class="form-control form-control-lg" id="search2" name="search" required></div>
+		</div>
+		<hr class="my-4" />
+		<div class="form-group mb-3 row"><label for="send-a-message4" class="col-md-5 col-form-label"></label>
+			<div class="col-md-7"><button class="btn-link" type="submit">Submit</button></div>
+		</div>
+	</form>
+</div>
+
+<div>
+  <% @scraped_hash.each do |recipe| %>
+    <div>
+      <h3><%= recipe.name %></h3>
+      <p><strong>Description:</strong> <%= recipe.description %></p>
+      <p>Rating: <%= recipe.rating %>/5</p>
+      <p>Time to prepare: <%= recipe.time_to_cook %></p>
+      <hr>
+    </div>
+  <% end %>
+</div>
