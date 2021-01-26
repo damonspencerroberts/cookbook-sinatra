@@ -8,7 +8,7 @@ require_relative 'lib/recipe'
 require_relative 'lib/scrape'
 configure :development do
   use BetterErrors::Middleware
-  BetterErrors.application_root = File.expand_path('..', __FILE__)
+  BetterErrors.application_root = File.expand_path(__dir__)
 end
 
 new_cookbook = Cookbook.new('lib/recipes.csv')
@@ -24,7 +24,8 @@ get '/new' do
 end
 
 post '/new' do
-  new_recipe = Recipe.new(params['recipe-title'], params['description'], params['recipe-rating'], params['prepare-time'])
+  new_recipe = Recipe.new(params['recipe-title'], params['description'], params['recipe-rating'],
+                          params['prepare-time'])
   new_cookbook.add_recipe(new_recipe)
   redirect '/'
 end
@@ -58,6 +59,12 @@ post '/search/:search_item/add/:index' do
   recipe_description = new_scrape.found_recipes_desc[index]
   recipe = Recipe.new(recipe_name, recipe_description, params['rate-this-recipe'], params['preparation-time'])
   new_cookbook.add_recipe(recipe)
+  redirect '/'
+end
+
+post '/delete/:index' do
+  index = params['delete-value'].to_i
+  new_cookbook.remove_recipe(index)
   redirect '/'
 end
 
